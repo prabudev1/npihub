@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <meta name='title' content='NPI - Info'>
+	    <meta name='description' content=''>
+	    <meta name='url' content=''>
+	    <meta name='keywords' content=''>
+		
+		<meta property='og:title' content='NPI - Info' />
+		<meta property='og:type' content='Website' />
+		<meta property='og:url' content='' />
+		<meta property='og:description' content='' />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+	    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+	    <link rel="stylesheet" href="assets/css/styles.css" />
+	    <link rel="Stylesheet" href="assets/css/jquery.fancybox-1.3.4.css" />
+	    <script src="assets/js/angular.min.1.7.2.js"></script>
+	    
+	    <title>NPI - Info</title>
+	</head>
+	<body ng-app="myApp" ng-controller="npiListCntrl">
+	<div class="loader-container" ng-show="loading"><div class="loader"></div></div>
+		<section class="sec-banner">
+			<div class="container">
+                <div class="banner-content">
+                    <a class="head_title" href="./index.html">NPI Data Hub</a>
+                    <p class="head_info">
+                        The NPI Registry is a directory of all active National Provider Identifier (NPI) records. 
+                        Healthcare providers acquire their unique 10-digit NPIs to identify themselves in a standard way throughout their industry.
+                    </p>
+				</div>
+            </div>
+		</section>
+		<section class="sec-body list-container">
+			<div class="container">
+				<h1>Provider List</h1>
+				<div class="sub-heading"><span ng-bind="npiListLength">0</span> provider(s) found.</div>
+				<table class="npi-table" ng-hide="npiListLength == 0">
+					<thead>
+						<tr>
+							<th>NPI</th>
+							<th>Name</th>
+							<th>Primary Practice Address</th>
+							<th>Mailing Address</th>
+							<th>Enumeration Date</th>
+							<th>Gender Code</th>
+							<th>Last Update Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="npi in npiList" ng-click="showNpiData(npi)">
+							<td><span ng-bind="npi.npi"></span></td>
+						    <td>
+						    	<span ng-bind="npi.pvNamePrefixText"></span>&nbsp;
+						    	<span ng-bind="npi.pvFirstName"></span>&nbsp;
+						    	<span ng-bind="npi.pvMiddleName"></span>&nbsp; 
+						    	<span ng-bind="npi.pvLastName"></span>&nbsp;
+						    	<span ng-bind="npi.pvNameSuffixText"></span>&nbsp;
+						    	<span ng-bind="npi.pvCredentialText"></span>
+							</td>
+							<td>
+						    	<span ng-bind="npi.pvFirstLineBusinessPracticeLocationAddress"></span><br>
+						    	<span ng-bind="npi.pvSecondLineBusinessPracticeLocationAddress"></span><br>
+						    	<span ng-bind="npi.pvBusinessPracticeLocationAddressCityName"></span>,&nbsp; 
+						    	<span ng-bind="npi.pvBusinessPracticeLocationAddressStateName"></span>,&nbsp;
+						    	<span ng-bind="npi.pvBusinessPracticeLocationAddressPostalCode"></span>,&nbsp;
+						    	<span ng-bind="npi.pvBusinessPracticeLocationAddressCountryCode"></span><br>
+						    	<span ng-bind="npi.pvBusinessPracticeLocationAddressTelephoneNumber"></span>
+							</td>
+							<td>
+						    	<span ng-bind="npi.pvFirstLineBusinessMailingAddress"></span><br>
+						    	<span ng-bind="npi.pvSecondLineBusinessMailingAddress"></span><br>
+						    	<span ng-bind="npi.pvBusinessMailingAddressCityName"></span>,&nbsp; 
+						    	<span ng-bind="npi.pvBusinessMailingAddressStateName"></span>,&nbsp;
+						    	<span ng-bind="npi.pvBusinessMailingAddressPostalCode"></span>,&nbsp;
+						    	<span ng-bind="npi.pvBusinessMailingAddressCountryCode"></span><br>
+						    	<span ng-bind="npi.pvBusinessMailingAddressTelephoneNumber"></span>
+							</td>
+							<td><span ng-bind="npi.pvEnumerationDate"></span></td>
+							<td><span ng-bind="npi.pvGenderCode"></span></td>
+							<td><span ng-bind="npi.lastUpdateDate"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<section class="sec-footor">
+			<div class="container">
+                <div class="footor-content">
+                    &copy; jeyam ravi undaguga 2018
+				</div> 
+            </div>
+		</section>
+	</body>
+	<script src="assets/js/main.js"></script>	
+</html>
